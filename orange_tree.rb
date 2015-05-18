@@ -1,17 +1,11 @@
-# Pairs: Ashley Watkins & Victoria Shabunia
-
 class OrangeTree
-  attr_reader :age, :height, :is_alive
+  attr_reader :age, :is_alive, :orange_count, :height
 
   def initialize
     @height = 0
     @orange_count = 0
     @age = 0
     @is_alive = true
-  end
-
-  def height
-    puts @height
   end
 
   def one_year_passes
@@ -35,10 +29,6 @@ class OrangeTree
     end
   end
 
-  def count_the_oranges
-    return @orange_count
-  end
-
   def pick_an_orange
     if @orange_count == 0
       puts "Oops, sorry. The tree is bare."
@@ -46,5 +36,30 @@ class OrangeTree
       @orange_count -= 1
       puts "Yum! Oranges are great for you!\nThere are #{@orange_count} oranges left."
     end
+  end
+end
+
+class OrangeGrove
+  def initialize(num_of_trees)
+    @trees = []
+    @total_oranges = 0
+
+    num_of_trees.times do
+      @trees.push(OrangeTree.new)
+    end
+  end
+
+  def one_year_passes
+    @trees.each do |tree|
+      tree.one_year_passes
+    end
+  end
+
+  def count_all_the_oranges
+    @trees.each do |tree|
+      @total_oranges += tree.orange_count
+    end
+
+    puts "The orange grove has #{@total_oranges} oranges."
   end
 end
