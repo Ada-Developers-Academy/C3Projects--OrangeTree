@@ -40,6 +40,11 @@ class OrangeTree
 		@age = 0 # problems?
 		@height = 0
 		puts "This tree has died."
+
+		# remove tree from grove
+		if @grove
+			@grove.trees.delete(self)
+		end
 	end
 
 	# the soil quality of the grove affects when a tree dies
@@ -132,11 +137,12 @@ class OrangeGrove
 	# one year passes for the entire grove
 	def one_year_passes_grove
 		@total_orange_count = 0
+		# call one_year_passes for each tree in grove
 		@trees.each do |tree|
 			tree.one_year_passes
+			# increment total_orange_count
 			@total_orange_count += tree.orange_count
 		end
-		# soil_quality
 	end
 
 end
