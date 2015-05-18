@@ -11,18 +11,18 @@ class OrangeTree
     @dead = false
   end
 
-  def one_year_passes
+  def one_year_passes # includes all the things we want to change each year
     @age += 1
     @height += 0.75
     @orange_count = 0
 
-      if (@age < 3)
+      if (@age < 3) # makes a young tree not produce oranges
         @orange_count = 0
-      elsif (@age >= @max_age)
+      elsif (@age >= @max_age) # lets you know if the tree dies
         @dead == true
         puts "Yo tree is ded."
       else
-        @orange_count = (@age * 2)
+        @orange_count = (@age * 2) # makes the number of oranges produced go up with the age
       end
 
   end
@@ -37,7 +37,7 @@ class OrangeTree
 
     def pick_an_orange
       if @orange_count > 0
-        @orange_count -= 1
+        @orange_count -= 1 # makes the orange_count change when this method is called
         puts "This orange is DOPE! Don't do drugs."
       else
         puts "Darn, no oranges. :("
@@ -53,17 +53,17 @@ attr_reader :tree_count, :orange_total, :tree
     puts "How many trees would you like in your grove?"
     @numbers = %w(0 1 2 3 4 5 6 7 8 9 )
     @tree_count = gets.chomp
-      while (@tree_count.to_i < 2) || (@tree_count.empty? == true) || (!@numbers.any? { |number| @tree_count.include?(number) })
+      while (@tree_count.to_i < 2) || (@tree_count.empty? == true) || (!@numbers.any? { |number| @tree_count.include?(number) }) # last part is if they don't use numbers
         puts "#{@tree_count} does not make a grove, stupid. \nJust kidding. But seriously, you need at least two trees for a grove. \nTry again."
         @tree_count = gets.chomp
       end
     @tree_count = @tree_count.to_i
     @orange_total = 0
-    @tree = OrangeTree.new
+    @tree = OrangeTree.new # makes a tree!
   end
 
   def one_grove_year
-    (@tree.one_year_passes) * @tree_count
+    (@tree.one_year_passes) * @tree_count # calls the one_year_passes method on one tree then multiplies it by the total number of trees
     puts "Your trees are #{@tree.age} year(s) old. They each have #{@tree.orange_count} oranges."
   end
 
@@ -71,6 +71,7 @@ attr_reader :tree_count, :orange_total, :tree
     @orange_total = @tree.orange_count * @tree_count
     puts "Your grove has #{@orange_total} oranges! YAY!"
   end
+
 
   # def pick_an_orange
   #   if @orange_total > 0
