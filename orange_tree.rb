@@ -63,7 +63,6 @@ class OrangeTree
 		else
 			@age += 1
 		end
-
 	end
 
 	# when a year passes, the tree grows older, gets taller, and grows oranges
@@ -117,6 +116,7 @@ class OrangeGrove
 		else
 			@soil_quality = "unhealthy"
 		end
+
 		return @soil_quality
 	end
 
@@ -124,11 +124,15 @@ class OrangeGrove
 	def plant_trees(number)
 		# check the input to make sure it's an integer
 		if number.to_i != 0 && !(number.to_s.include?("."))
+			# create new trees and add to grove
 			number.times do
 				new_tree = OrangeTree.new
 				new_tree.plant_on(self)
 			end
+
+			# update soil_quality
 			soil_quality
+
 		else
 			puts "You can't plant #{number} trees. Please try again with a number."
 		end
@@ -144,5 +148,4 @@ class OrangeGrove
 			@total_orange_count += tree.orange_count
 		end
 	end
-
 end
