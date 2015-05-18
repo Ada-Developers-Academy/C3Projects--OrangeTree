@@ -1,6 +1,7 @@
-# ORANGE TREE - BREAKFAST
+# Brandi, Carly, & Lila - ORANGE TREE (BREAKFAST + LUNCH)
+
 class OrangeTree
-  attr_reader :height, :age, :orange_count, :death_age
+  attr_reader :height, :age, :orange_count, :death_age, :is_dead
 
   # creates new tree
   def initialize
@@ -9,6 +10,7 @@ class OrangeTree
     @orange_count = 0
     @death_age = (rand(90..110))   # random age between 90 - 110
     @max_height = 30
+    @is_dead = false
   end # ends initialize
 
   # grows oranges based on age
@@ -37,16 +39,22 @@ class OrangeTree
     end
   end # ends increases_height
 
-  # increases height, age; changes orange count; possibly dies
+  # increases age; checks if tree is dead; changes orange count & height; possibly dies
   def one_year_passes
-    increases_height   # increases height
-    @age += 1   # increases age
-    produces_oranges   # checks the number of oranges that grow according to age
+      @age += 1   # increases age
 
-    # checks for death_age
-    if @age >= @death_age
-      puts "Your tree has passed on. Goodbye tree."
-      # CAN INCLUDE IS_DEAD? VARIABLE
+    if @is_dead == false   # if tree is still alive
+      increases_height   # increases height
+      produces_oranges   # checks the number of oranges that grow according to age
+
+      # checks for death_age
+      if @age >= @death_age
+        puts "Your tree has passed on. Goodbye tree."
+        @is_dead = true
+        @orange_count = 0   # trees can't produce oranges when dead :(
+      end
+    else   # if tree died
+      puts "Your tree is still dead."
     end
   end # ends one_year_passes
 
@@ -64,28 +72,28 @@ end # ends class OrangeTree
 
 #########################################################
 
-# ORANGE TREE - LUNCH
 class OrangeGrove
   attr_reader :tree_count
 
   # creates new grove
   def initialize
     @grove = []
-    @grove.push(OrangeTree.new)
+    @grove.push(OrangeTree.new)   # adds a single tree (object) to the grove (array)
     @tree_count = @grove.length
     @total_oranges = 0
   end # ends initialize
 
   # returns tree count
   def trees_planted
-    if @tree_count <= 10   # if less than 10 plant 1 - 2 trees
+    if @tree_count <= 10   # if less than 10, plant 1 tree
       @grove.push(OrangeTree.new)
       @tree_count = @grove.length   # counts the elements of grove array and sets it as tree_count
     elsif @tree_count <= 50   # if less than 50 plant 10 - 15 trees
       new_trees_planted = 0
       new_tree_total = rand(10..15)
-      while new_trees_planted <= new_tree_total
+      while new_trees_planted <= new_tree_total   # plants the amount of trees determined by new_tree_total
         @grove.push(OrangeTree.new)
+        new_trees_planted += 1
       end
       @tree_count = @grove.length
     else
@@ -103,7 +111,8 @@ class OrangeGrove
 
   # counts the oranges on ALL the trees
   def count_all_the_oranges
-    @grove.each do |tree|
+    @total_oranges = 0   # resets the orange total orange count (so doesn't stack from previous method calls)
+    @grove.each do |tree|   # adds each tree orange count to the total
       @total_oranges += tree.orange_count
     end
     @total_oranges
