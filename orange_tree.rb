@@ -17,6 +17,7 @@ class OrangeTree
         # oranges of the past year fall off since @orange_count is reassigned
         # grows standard of 50 oranges
         # plus 10 oranges per year the tree has been fruitful (starting at age 6)
+
         @orange_count = 50 + (10 * (age - 6))
       end
 
@@ -36,6 +37,13 @@ class OrangeTree
       @orange_count -= 1
       puts "Yum! Oranges are great for you!\nThere are #{@orange_count} oranges left."
     end
+  end
+
+  # create a new instance of `OrangeTree`
+  # call this method on that instance
+  def plant_on(grove)
+    # `.add_tree` of `OrangeGrove` pushes the instance to its array `@trees`
+    grove.add_tree(self)
   end
 end
 
@@ -61,5 +69,9 @@ class OrangeGrove
     end
 
     puts "The orange grove has #{@total_oranges} oranges."
+  end
+
+  def add_tree(tree)
+    @trees.push(tree)
   end
 end
