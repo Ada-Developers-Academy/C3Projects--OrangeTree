@@ -12,7 +12,7 @@ class OrangeTree
   end
 
   def increases_height
-    #increases height according to age
+    #increases height according to age.
     if (@age <= 5)
       @height += 3
       #puts "#{@height}"
