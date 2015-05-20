@@ -36,6 +36,7 @@
     # outputs count of oranges at current age
     def count_the_oranges
       puts "Your tree has #{@orange_count} tasty oranges!"
+      return @orange_count
     end
 
     # outputs tree height at current age
@@ -47,9 +48,13 @@
     def pick_an_orange
       if @orange_count > 0
         @orange_count -= 1
-        puts "This orange is DOPE! Don't do drugs."
+        tasty_orange = "This orange is DOPE! Don't do drugs."
+        puts tasty_orange
+        return tasty_orange
       else
-        puts "Darn, no oranges. :("
+        no_oranges = "Darn, no oranges. :("
+        puts no_oranges
+        return no_oranges
         return @orange_count
       end
     end
@@ -83,6 +88,7 @@ class OrangeGrove
   def count_all_oranges
     @orange_total = @tree.orange_count * @tree_count
     puts "Your grove has #{@orange_total} oranges! YAY!"
+    return @orange_total
   end
 
 end
