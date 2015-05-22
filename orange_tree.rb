@@ -1,8 +1,6 @@
 class OrangeTree
   attr_reader :age, :is_alive, :orange_count, :height
   attr_accessor :death_year, :baseline_oranges
-  # temp
-  attr_accessor :trees, :is_alive
 
   def initialize
     @height = 0
