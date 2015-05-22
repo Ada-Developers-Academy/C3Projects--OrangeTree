@@ -1,6 +1,8 @@
 class OrangeTree
   attr_reader :age, :is_alive, :orange_count, :height
   attr_accessor :death_year, :baseline_oranges
+  # temp
+  attr_accessor :trees, :is_alive
 
   def initialize
     @height = 0
@@ -100,7 +102,7 @@ class OrangeGrove
       @total_oranges += tree.orange_count
     end
 
-    puts "The orange grove has #{@total_oranges} oranges."
+    return @total_oranges
   end
 
   def add_tree(tree)
