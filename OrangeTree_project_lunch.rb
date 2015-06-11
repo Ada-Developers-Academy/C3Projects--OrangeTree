@@ -8,23 +8,30 @@
       @age = 0
       @orange_count = 0
       @max_age = 100
-      @dead = false
+      # @dead = false
     end
 
+    HEIGHT_INCREMENT = 0.75
+    MIN_AGE_FOR_ORANGE_GROWTH = 3
+
     # When one year passes, increases age and height
+    def death
+      # @dead == true
+      return "Yo tree is ded."
+    end
+
     def one_year_passes
       @orange_count = 0
       @age += 1
-      @height += 0.75
+      @height += HEIGHT_INCREMENT
 
       # trees less than 3 years of age don't grow oranges
-      if @age < 3
+      if @age < MIN_AGE_FOR_ORANGE_GROWTH
         @orange_count = 0
 
       # once max age is reached, tree dies
       elsif @age >= @max_age
-        @dead == true
-        puts "Yo tree is ded."
+        death
 
       # after 3 years, orange count increases
       else
@@ -54,7 +61,6 @@
       else
         no_oranges = "Darn, no oranges. :("
         puts no_oranges
-        return no_oranges
         return @orange_count
       end
     end
