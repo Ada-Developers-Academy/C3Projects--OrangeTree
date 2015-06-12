@@ -1,4 +1,5 @@
 # ORANGE TREE ------------------------------------------------------------------------------->
+
 module Orange
 	class OrangeTree
 
@@ -49,11 +50,12 @@ module Orange
 				puts "Darn, no oranges. :("
 			end
 			return @orange_count
-		end
-		
+		end		
 	end
 
+
 	# ORANGE GROVE ------------------------------------------------------------------------------>
+
 	class OrangeGrove
 		NUMBERS = %w(0 1 2 3 4 5 6 7 8 9)
 
@@ -96,4 +98,3 @@ module Orange
 
 	end
 end
-
