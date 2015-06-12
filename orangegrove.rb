@@ -95,6 +95,5 @@ module Orange
 			puts "Your grove has #{@orange_total} oranges! YAY!"
 			return @orange_total
 		end
-
 	end
-end
+end # module
