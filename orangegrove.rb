@@ -53,7 +53,6 @@ module Orange
     end
   end
 
-
   # ORANGE GROVE ------------------------------------------------------------------------------>
 
   class OrangeGrove
