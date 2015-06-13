@@ -6,10 +6,10 @@ module Orange
     attr_reader :age, :orange_count
 
     def initialize
-      @height = 0
-      @age = 0
+      @height  = 0
+      @age     = 0
       @max_age = 100
-      @dead = false
+      @dead    = false
     end
 
     # Ages tree one year, grows tree 0.75ft/year, increases oranges/tree after age 3
@@ -64,9 +64,9 @@ module Orange
     def initialize
       create_trees
 
-      @tree_count = @tree_count.to_i
+      @tree_count   = @tree_count.to_i
       @orange_total = 0
-      @tree = OrangeTree.new
+      @tree         = OrangeTree.new
     end
 
     # Creates trees for grove
