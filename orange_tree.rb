@@ -15,10 +15,12 @@ class OrangeTree
 	def grow_oranges
 		if @age >= 3
 			# number of oranges grown depends on soil_quality
-			if @grove.soil_quality == "unhealthy"
-				@orange_count = @age
-			elsif @grove.soil_quality == "average"
-				@orange_count = @age * 2
+			if @grove
+				if @grove.soil_quality == "unhealthy"
+					@orange_count = @age
+				elsif @grove.soil_quality == "average"
+					@orange_count = @age * 2
+				end
 			else
 				@orange_count = @age * 3
 			end
