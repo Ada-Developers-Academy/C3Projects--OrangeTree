@@ -11,8 +11,8 @@ class OrangeTree
 		@orange_count = 0
 	end
 
-	# start growing oranges at age 3 years
 	def grow_oranges
+		# start growing oranges at age 3 years
 		if @age >= 3
 			# number of oranges grown depends on soil_quality
 			if @grove
@@ -49,8 +49,7 @@ class OrangeTree
 		end
 	end
 
-	# the soil quality of the grove affects when a tree dies
-	def grow_older
+	def grow_older	# soil quality of grove affects when a tree dies
 		if @grove
 			if @grove.soil_quality == "unhealthy" && @age >= 5
 				kill_tree
@@ -59,15 +58,14 @@ class OrangeTree
 			end
 		end
 
-		# if a tree isn't dead, increment the age by 1
 		if age >= 10
 			kill_tree
-		else
+		else	# if a tree isn't dead, increment the age by 1
 			@age += 1
 		end
 	end
 
-	# when a year passes, the tree grows older, gets taller, and grows oranges
+	# when a year passes, tree grows older, gets taller, and grows oranges
 	def one_year_passes
 		grow_older
 		if @alive == true
